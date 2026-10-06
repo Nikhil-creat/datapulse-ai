@@ -1,0 +1,235 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Nikhil Chary Sriramoju · DataPulse AI</title><meta name="description" content="AI, ML and data engineering portfolio with a live agentic assistant, data lab, RAG vault and in-browser CNN."><meta name="theme-color" content="#070b14">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--bg:#070b14;--p:rgba(14,22,42,.8);--ln:rgba(120,160,255,.18);--tx:#e6ecff;--mu:#8a98b8;--c:#3df5ff;--v:#8b5cff;--a:#ffb23d;--r:#ff4d6d;--g:#3dff9a}
+*{box-sizing:border-box}html,body{margin:0;height:100%}body{background:var(--bg);color:var(--tx);font:15px/1.55 Sora,system-ui,sans-serif;display:flex;overflow:hidden}
+#bg{position:fixed;inset:0;z-index:0}aside,main{position:relative;z-index:1}
+aside{width:200px;padding:16px 10px;border-right:1px solid var(--ln);background:var(--p);backdrop-filter:blur(14px);display:flex;flex-direction:column;gap:3px;overflow:auto}
+.logo{font-weight:800;font-size:18px;padding:4px 10px 12px}.logo b{color:var(--c)}
+aside button{all:unset;cursor:pointer;padding:9px 12px;border-radius:8px;color:var(--mu);white-space:nowrap}aside button:hover{background:rgba(255,255,255,.05)}aside button.on{color:#050810;background:var(--c);font-weight:600}
+.sp{flex:1}.kbd{font-size:12px;color:var(--mu);padding:8px 12px}
+main{flex:1;overflow:auto;padding:22px 26px 80px}section{display:none;max-width:1080px;margin:0 auto}section.on{display:block}
+h2{font-size:28px;font-weight:800;margin:0 0 4px;letter-spacing:-.02em}h3{margin:0 0 8px;font-size:16px}.mu{color:var(--mu)}a{color:var(--c)}
+.card{background:var(--p);border:1px solid var(--ln);border-radius:14px;padding:16px;margin:14px 0;backdrop-filter:blur(10px)}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}.g>.card{margin:0}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.row>input,.row>select{flex:1;min-width:140px}
+input,select,textarea{background:rgba(255,255,255,.05);border:1px solid var(--ln);border-radius:9px;padding:10px 12px;color:var(--tx);font:inherit;width:100%}option{background:#0e162a}
+button.b,a.b{background:linear-gradient(135deg,var(--c),var(--v));color:#050810;border:0;border-radius:9px;padding:10px 16px;font:600 14px Sora;cursor:pointer;text-decoration:none;display:inline-block}
+button.o,a.o{background:transparent;color:var(--tx);border:1px solid var(--ln);border-radius:9px;padding:9px 14px;font:inherit;font-size:14px;cursor:pointer;text-decoration:none;display:inline-block}
+:focus-visible{outline:2px solid var(--c);outline-offset:2px}
+.hero{padding:26px 0 8px}.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.03;margin:0 0 10px;font-weight:800;letter-spacing:-.04em}.hero h1 span{background:linear-gradient(90deg,var(--c),var(--v));-webkit-background-clip:text;color:transparent}
+#boot{font:12.5px/1.7 ui-monospace,Menlo,monospace;color:var(--g);min-height:92px;margin-bottom:12px}
+.st{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}.st div{border:1px solid var(--ln);border-radius:12px;padding:12px;background:var(--p)}.st b{display:block;font-size:22px;color:var(--c)}.st span{font-size:12px;color:var(--mu)}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--r);margin-right:6px}.dot.ok{background:var(--g);box-shadow:0 0 8px var(--g)}
+.drop{border:1.5px dashed var(--c);text-align:center;padding:28px;cursor:pointer;border-radius:14px;display:block}
+.sc{overflow:auto}table{border-collapse:collapse;font-size:12.5px;width:100%}th,td{padding:5px 8px;border-bottom:1px solid var(--ln);text-align:left;white-space:nowrap}
+.msgs{height:54vh;overflow:auto;display:flex;flex-direction:column;gap:10px;padding:4px}.m{padding:10px 14px;border-radius:14px;max-width:90%;word-wrap:break-word}.m.u{align-self:flex-end;background:linear-gradient(135deg,#1d4ed8,var(--v))}.m.a{background:rgba(255,255,255,.06);border:1px solid var(--ln)}
+.tr{font-size:12.5px;border-left:2px solid var(--a);padding:2px 10px;margin:6px 0;color:var(--mu)}.tr b{color:var(--a)}.tr code{display:block;white-space:pre-wrap;word-break:break-all}
+code{font-family:ui-monospace,Menlo,monospace;background:rgba(255,255,255,.07);padding:1px 5px;border-radius:4px}
+.bar{display:flex;align-items:center;gap:8px;font-size:13px;margin:4px 0}.bar i{display:block;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--c),var(--v))}
+.chip{padding:5px 11px;border:1px solid var(--ln);border-radius:20px;font-size:13px;cursor:pointer;background:transparent;color:var(--tx);font-family:inherit}.chip.on{background:var(--c);color:#050810}
+.tag{display:inline-block;font-size:11.5px;padding:2px 9px;margin:2px 3px 2px 0;border-radius:20px;border:1px solid var(--ln);color:var(--mu)}
+.tl{border-left:2px solid var(--v);padding-left:14px;margin:10px 0}.tl b{display:block}
+#pal{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9;display:none;padding-top:14vh}#pal.on{display:flex;justify-content:center;align-items:flex-start}#pal>div{width:min(520px,92vw)}#pl button{display:block;width:100%;text-align:left;background:#0e162a;border:0;border-bottom:1px solid var(--ln);color:var(--tx);padding:12px;font:inherit;cursor:pointer}
+#tout{background:#04070e;border:1px solid var(--ln);border-radius:12px;padding:12px;height:50vh;overflow:auto;font:13px/1.6 ui-monospace,Menlo,monospace;white-space:pre-wrap}#tout .c{color:var(--c)}
+img#im{max-width:100%;max-height:300px;border-radius:12px}
+@media(max-width:760px){body{flex-direction:column-reverse}aside{width:100%;flex-direction:row;padding:6px;border-right:0;border-top:1px solid var(--ln)}.logo,.sp,.kbd{display:none}main{padding:16px 14px 20px}}
+@media(prefers-reduced-motion:reduce){#bg{display:none}}
+@media print{aside,#bg,.np,#pal{display:none!important}body{background:#fff;color:#000;overflow:visible;display:block}main{overflow:visible;padding:0}section{display:none!important}#profile{display:block!important}.card{background:#fff;border:1px solid #bbb;color:#000}.mu,.tag{color:#444}a{color:#000}}
+</style></head><body>
+<canvas id="bg"></canvas><aside id="nav"></aside>
+<main>
+<section id="home" class="on"><div class="hero"><div id="boot"></div><h1>Nikhil Chary Sriramoju.<br><span>Agentic AI, ML &amp; data engineering.</span></h1>
+<p class="mu" style="max-width:600px">Final-year CSE engineer. This is my live mission control: ask my AI assistant about my work, analyse your own CSV, run agent missions, search documents and classify images with a CNN, all in your browser.</p>
+<div class="row"><button class="b" onclick="go('nova')">Talk to Nova</button><button class="o" onclick="go('proj')">See projects</button><button class="o" onclick="go('profile')">Credentials</button><button class="o" onclick="go('set')">Add Groq key</button></div></div>
+<div class="st" id="stat" style="margin-top:16px"></div></section>
+
+<section id="profile"><div class="row" style="justify-content:space-between"><div><h2>Nikhil Chary Sriramoju</h2><p class="mu" style="margin:0">AI · ML · Data Engineering · Thorrur, Telangana, India</p></div><div class="row np"><button class="b" onclick="go('profile');setTimeout(()=>print(),150)">Save as PDF</button></div></div>
+<div class="card"><h3>Links</h3><div class="row"><a class="o" id="lg" target="_blank" rel="noopener">GitHub</a><a class="o" id="ll" target="_blank" rel="noopener">LinkedIn</a><a class="o" id="le">Email</a></div></div>
+<div class="g"><div class="card"><h3>Education</h3><div class="tl"><b>B.Tech, Computer Science and Engineering</b>Vaagdevi College of Engineering<br><span class="mu">2023 to 2027 (final year)</span></div></div>
+<div class="card"><h3>Experience</h3><div id="exp"></div></div></div>
+<div class="card"><h3>Certifications</h3><div class="g" id="cert"></div></div>
+<div class="card"><h3>Skill map</h3><div id="skills"></div></div>
+<div class="card"><h3>Live from GitHub</h3><div id="ghl" class="mu">Loading...</div></div></section>
+
+<section id="proj"><h2>Projects</h2><p class="mu">Systems built across agentic AI, LLM engineering, data engineering and vision. Ask Nova about any of them.</p>
+<div class="row" id="pf"></div><div class="g" style="margin-top:14px" id="pg"></div><div class="card"><h3>Where the work sits</h3><canvas id="pc" height="160"></canvas></div></section>
+
+<section id="nova"><h2>Nova</h2><p class="mu">My AI assistant. Without a key it answers from my portfolio. With a free Groq key it becomes a tool-calling agent that can also query your data.</p>
+<div class="card"><div class="msgs" id="cm"></div><div class="row" style="margin-top:10px"><input id="ci" placeholder="Ask about Nikhil, or your data"><button class="o" id="mic">Mic</button><button class="b" onclick="send()">Send</button></div>
+<div class="row" style="margin-top:8px"><button class="chip" onclick="q('Who is Nikhil and what has he built?')">Who is Nikhil?</button><button class="chip" onclick="q('Which project shows data engineering skills?')">Data engineering</button><button class="chip" onclick="q('What internships has Nikhil done?')">Experience</button><button class="chip" onclick="q('Summarise my dataset and flag anything unusual')">Analyse my data</button><label class="chip"><input type="checkbox" id="tts" style="width:auto"> Speak</label></div></div></section>
+
+<section id="mis"><h2>Agent Missions</h2><p class="mu">Give a goal. A planner writes the steps, Nova executes each with tools, then writes a brief. Needs a Groq key.</p>
+<div class="card"><div class="row"><input id="gi" placeholder="Investigate what drives revenue and recommend 3 actions"><button class="b" onclick="mission()">Launch</button></div><div id="mo"></div></div></section>
+
+<section id="data"><h2>Data Lab</h2><p class="mu">Drop a CSV. Everything is computed locally in your browser.</p>
+<label class="card drop" id="dz">Drop a CSV or tap to choose<input type="file" id="cf" accept=".csv" hidden></label><div class="row"><button class="o" onclick="sample()">Sample: e-commerce sales</button><button class="o" onclick="report()">Download report</button></div><div id="dout"></div></section>
+
+<section id="vault"><h2>Vault</h2><p class="mu">Retrieval-augmented answers over your own text (TF-IDF). Needs a Groq key to write answers.</p>
+<div class="card"><textarea id="vt" rows="4" placeholder="Paste notes, a data dictionary, a report..."></textarea><div class="row" style="margin-top:8px"><input type="file" id="vf" accept=".txt,.md,.csv,.json"><button class="b" onclick="vadd()">Index</button></div><p class="mu" id="vs"></p></div>
+<div class="card"><div class="row"><input id="vq" placeholder="Ask your documents"><button class="b" onclick="vask()">Ask</button></div><div id="va"></div></div></section>
+
+<section id="vis"><h2>Vision</h2><p class="mu">MobileNetV2 CNN running on your device with TensorFlow.js. First use downloads about 14 MB.</p>
+<div class="card"><input type="file" id="vi" accept="image/*"><div class="g" style="margin-top:12px"><img id="im" alt="" hidden><div id="vo"></div></div></div></section>
+
+<section id="term"><h2>Terminal</h2><p class="mu">Try: help, whoami, skills, projects, certs, exp, contact, github, ask &lt;question&gt;</p><div class="card"><div id="tout"></div><div class="row" style="margin-top:8px"><input id="tin" placeholder="type a command" autocapitalize="off" autocomplete="off"></div></div></section>
+
+<section id="set"><h2>Settings</h2><div class="card"><h3>Groq API key</h3><p class="mu">Free at console.groq.com/keys. Stored only in this browser. Never commit it to GitHub.</p><input id="gk" type="password" placeholder="gsk_...">
+<h3 style="margin-top:14px">Model</h3><select id="gm"><option value="auto">Auto (best available)</option></select><p class="mu" id="am"></p><div class="row" style="margin-top:12px"><button class="b" onclick="saveCfg()">Save and test</button><button class="o" onclick="if(confirm('Erase notes and key?')){localStorage.clear();location.reload()}">Erase local data</button></div></div></section>
+</main>
+<div id="pal" onclick="if(event.target==this)this.classList.remove('on')"><div><input id="pi" placeholder="Jump to..." autocomplete="off"><div id="pl"></div></div></div>
+<script>
+const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const md=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/`(.+?)`/g,'<code>$1</code>').replace(/\n/g,'<br>');
+const L=(k,d)=>{try{return JSON.parse(localStorage[k])}catch{return d}};
+const ME={name:'Nikhil Chary Sriramoju',gh:'Nikhil-creat',email:'sriramojunikhil66@gmail.com',li:'https://in.linkedin.com/in/nikhil-chary-sriramoju-95041b38a'};
+let gm=localStorage.gm||'auto';if(/llama-3\.(3-70b|1-8b)/.test(gm))gm='auto';
+const cfg={key:localStorage.gk||'',model:gm,active:''};
+const EXP=[{r:'Machine Learning Engineer Intern',o:'Yuva Intern (NSDC)',d:'Aug to Sep 2026'},{r:'Data Analytics Intern',o:'Thiranex',d:'Jul to Aug 2026'}];
+const CERT=[['AI-Data Engineering & Cloud Infrastructure Analyst','NASSCOM · Skill India Digital Hub'],['AI Fundamentals','IBM SkillsBuild'],['AI/ML Engineer Foundation','Reliance Foundation']];
+const SK={'Agentic AI & LLMs':['LangGraph','RAG','Graph-RAG','Groq','LoRA fine-tuning','semantic caching'],'ML & Vision':['CNN','ViT','computer vision'],'Data Engineering':['Spark','Delta Lake','dbt','Airflow','Kafka','data analytics'],'Full-stack & Cloud':['Next.js','FastAPI','Docker','Supabase','Cloudflare R2','Vercel','GitHub Pages'],'Vector & Graph DBs':['pgvector','Qdrant','Neo4j']};
+const GHU='https://github.com/'+ME.gh;
+const PR=[
+{n:'AetherNexus-Quantum',dom:'ML & Vision',d:'Enterprise monorepo for a 3D spatial digital twin with ViT/CNN vision, Graph-RAG, a LangGraph swarm and post-quantum crypto telemetry.',t:['ViT','CNN','Graph-RAG','LangGraph']},
+{n:'AI Gateway Engine',dom:'Agentic AI',d:'Autonomous enterprise AI gateway and multi-modal agentic engine with Wasm edge, semantic cache, speculative racing and cost autopilot.',t:['Wasm','semantic cache','agents']},
+{n:'LoRA Forge',dom:'LLM Engineering',d:'LoRA fine-tuning pipeline for Llama 3 8B and Mistral 7B.',t:['LoRA','Llama 3','Mistral']},
+{n:'LedgerMind',dom:'Agentic AI',d:'Agentic AI GST invoice copilot for Indian small businesses and CAs.',t:['agents','GST','SaaS']},
+{n:'Project TYPHOID',dom:'Agentic AI',d:'Autonomous testing, chaos engineering and self-healing CI/CD platform.',t:['Next.js','FastAPI','Kafka','LangGraph','Qdrant','Neo4j']},
+{n:'ReviewFlow AI',dom:'Full-stack SaaS',d:'Autonomous reputation and local-marketing micro-SaaS.',t:['Next.js','FastAPI','LangGraph','Groq','pgvector','Docker']},
+{n:'Sentinel-X',dom:'ML & Vision',d:'Responsive 3D AI/ML and cybersecurity showcase with agentic AI, RAG, CNN, LLM and Docker.',t:['Agentic AI','RAG','CNN','Docker']},
+{n:'RetailIQ',dom:'Data Engineering',d:'Lakehouse analytics platform for e-commerce data.',t:['Spark','Delta Lake','dbt','Airflow']},
+{n:'OmniCalc-X',dom:'Full-stack SaaS',d:'Scientific computing platform with a CNN vision service, RAG vector database and multi-agent orchestrator.',t:['Next.js','FastAPI','CNN','RAG']},
+{n:'NEXUS Media',dom:'Full-stack SaaS',d:'Private AI-powered personal media library with row-level security and vector search.',t:['Next.js','Supabase','pgvector','Cloudflare R2','Gemini','Groq']},
+{n:'Hybrid RAG Pipeline',dom:'LLM Engineering',d:'Hybrid-search retrieval-augmented generation over internal documents.',t:['RAG','hybrid search']},
+{n:'Semanticache',dom:'LLM Engineering',d:'Semantic cache project for LLM calls.',t:['semantic cache'],u:GHU+'/semanticache'},
+{n:'CodeFixern',dom:'LLM Engineering',d:'Polyglot code-healing and diagnostics web app.',t:['LLM','diagnostics']},
+{n:'OmniParse AI',dom:'LLM Engineering',d:'Semantic code and theory compression web app.',t:['LLM','summarisation']},
+{n:'Voyagr',dom:'Full-stack SaaS',d:'AI trip planner as an installable PWA.',t:['PWA','AI'],u:GHU+'/voyagr'},
+{n:'DataPulse AI',dom:'Data Engineering',d:'This site: data lab, agentic assistant, RAG vault and in-browser CNN.',t:['Groq','TensorFlow.js','Chart.js'],u:GHU+'/datapulse-ai'}];
+const S={rows:[],cols:[],num:[],docs:[],notes:L('notes',[]),msgs:[],name:''};
+let GH=[];
+const TABS=[['home','Home'],['profile','Profile'],['proj','Projects'],['nova','Nova'],['mis','Missions'],['data','Data Lab'],['vault','Vault'],['vis','Vision'],['term','Terminal'],['set','Settings']];
+$('nav').innerHTML='<div class="logo">Data<b>Pulse</b></div>'+TABS.map(([i,n])=>`<button data-t="${i}" class="${i=='home'?'on':''}">${n}</button>`).join('')+'<div class="sp"></div><div class="kbd">Ctrl+K palette</div>';
+function go(t){document.querySelectorAll('section,aside button').forEach(x=>x.classList.remove('on'));$(t).classList.add('on');const b=document.querySelector(`aside button[data-t="${t}"]`);b&&b.classList.add('on');$('pal').classList.remove('on');status();$(t).scrollIntoView&&$('nav').scrollTo&&0}
+$('nav').onclick=e=>e.target.dataset.t&&go(e.target.dataset.t);
+function status(){const st=GH.reduce((a,r)=>a+r.stargazers_count,0);$('stat').innerHTML=[['Groq',cfg.key?'<span class="dot ok"></span>ready':'<span class="dot"></span>offline'],['Public repos',GH.length||'...'],['GitHub stars',GH.length?st:'...'],['Projects',PR.length],['Certifications',CERT.length],['Internships',EXP.length],['Dataset',S.rows.length?S.rows.length+' rows':'none']].map(([a,b])=>`<div><b>${b}</b><span>${a}</span></div>`).join('')}
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key=='k'){e.preventDefault();$('pal').classList.add('on');$('pi').value='';plist('');$('pi').focus()}if(e.key=='Escape')$('pal').classList.remove('on')});
+function plist(f){$('pl').innerHTML=TABS.filter(t=>t[1].toLowerCase().includes(f.toLowerCase())).map(t=>`<button onclick="go('${t[0]}')">${t[1]}</button>`).join('')}$('pi').oninput=e=>plist(e.target.value);
+// background
+(function(){const c=$('bg'),x=c.getContext('2d');let w,h,P=[];function rs(){w=c.width=innerWidth;h=c.height=innerHeight;P=Array.from({length:Math.min(70,w/16|0)},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3}))}rs();addEventListener('resize',rs);
+(function f(){x.clearRect(0,0,w,h);P.forEach((p,i)=>{p.x=(p.x+p.vx+w)%w;p.y=(p.y+p.vy+h)%h;x.fillStyle='rgba(61,245,255,.55)';x.fillRect(p.x,p.y,2,2);for(let j=i+1;j<P.length;j++){const d=Math.hypot(p.x-P[j].x,p.y-P[j].y);if(d<130){x.strokeStyle=`rgba(139,92,255,${.22*(1-d/130)})`;x.beginPath();x.moveTo(p.x,p.y);x.lineTo(P[j].x,P[j].y);x.stroke()}}});requestAnimationFrame(f)})()})();
+(async()=>{const b=$('boot');for(const l of['init datapulse-kernel ........ ok','mount nova-agent (groq tool-calling) ... ok','load portfolio-kb ........ ok','attach cnn-vision (mobilenetv2) ... standby','operator verified: '+ME.name]){b.innerHTML+=`<div>&gt; ${l}</div>`;await new Promise(r=>setTimeout(r,320))}})();
+// profile + projects render
+$('lg').href=GHU;$('ll').href=ME.li;$('le').href='mailto:'+ME.email;$('le').textContent=ME.email;
+$('exp').innerHTML=EXP.map(e=>`<div class="tl"><b>${e.r}</b>${e.o}<br><span class="mu">${e.d}</span></div>`).join('');
+$('cert').innerHTML=CERT.map(c=>`<div class="card"><b>${c[0]}</b><br><span class="mu">${c[1]}</span></div>`).join('');
+$('skills').innerHTML=Object.entries(SK).map(([k,v])=>`<p style="margin:8px 0 2px"><b>${k}</b></p>${v.map(s=>`<span class="tag">${s}</span>`).join('')}`).join('');
+const DOMS=[...new Set(PR.map(p=>p.dom))];let pch;
+function projs(f){$('pf').innerHTML=['All',...DOMS].map(d=>`<button class="chip ${d==(f||'All')?'on':''}" onclick="projs('${d}')">${d}</button>`).join('');
+$('pg').innerHTML=PR.filter(p=>!f||f=='All'||p.dom==f).map(p=>`<div class="card"><h3>${esc(p.n)}</h3><p class="mu" style="margin:0 0 8px">${esc(p.d)}</p>${p.t.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}<div class="row" style="margin-top:10px"><button class="o" onclick="go('nova');q('Tell me about the project ${esc(p.n)}')">Ask Nova</button><a class="o" target="_blank" rel="noopener" href="${p.u||GHU}">GitHub</a></div></div>`).join('')}
+projs();pch=new Chart($('pc'),{type:'bar',data:{labels:DOMS,datasets:[{data:DOMS.map(d=>PR.filter(p=>p.dom==d).length),backgroundColor:'#8b5cff'}]},options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#8a98b8',stepSize:1},grid:{color:'rgba(120,160,255,.1)'}},y:{ticks:{color:'#8a98b8'},grid:{display:false}}}}});
+(async()=>{try{const r=await fetch(`https://api.github.com/users/${ME.gh}/repos?per_page=100&sort=updated`);if(!r.ok)throw 0;GH=await r.json();status();
+$('ghl').innerHTML=GH.slice(0,8).map(r=>`<div style="padding:6px 0;border-bottom:1px solid var(--ln)"><a target="_blank" rel="noopener" href="${r.html_url}">${esc(r.name)}</a> <span class="mu">${esc(r.language||'')} ${r.stargazers_count?'· '+r.stargazers_count+' stars':''}</span><br><span class="mu">${esc(r.description||'')}</span></div>`).join('')||'No public repos yet.'}catch{$('ghl').textContent='Could not load GitHub data right now.'}})();
+// ---------- Data Lab ----------
+function parseCSV(t){const R=[];let r=[],c='',q=false;for(let i=0;i<t.length;i++){const ch=t[i];if(q){if(ch=='"'){if(t[i+1]=='"'){c+='"';i++}else q=false}else c+=ch}else if(ch=='"')q=true;else if(ch==','){r.push(c);c=''}else if(ch=='\n'||ch=='\r'){if(ch=='\r'&&t[i+1]=='\n')i++;r.push(c);c='';if(r.length>1||r[0]!=='')R.push(r);r=[]}else c+=ch}if(c!==''||r.length){r.push(c);R.push(r)}return R}
+const mean=a=>a.reduce((x,y)=>x+y,0)/a.length,sd=a=>{const m=mean(a);return Math.sqrt(mean(a.map(v=>(v-m)**2)))},med=a=>{const s=[...a].sort((x,y)=>x-y);return s[s.length>>1]};
+function corr(a,b){const ma=mean(a),mb=mean(b);let n=0,da=0,db=0;a.forEach((v,i)=>{n+=(v-ma)*(b[i]-mb);da+=(v-ma)**2;db+=(b[i]-mb)**2});return n/Math.sqrt(da*db||1)}
+function ingest(text,name){const R=parseCSV(text);if(R.length<2)return alert('Could not read this CSV');const cols=R[0].map(s=>s.trim());
+S.rows=R.slice(1).map(r=>Object.fromEntries(cols.map((c,i)=>[c,r[i]===undefined||r[i]===''?null:r[i]])));S.cols=cols;
+S.num=cols.filter(c=>{const v=S.rows.map(r=>r[c]).filter(x=>x!==null);return v.length&&v.filter(x=>!isNaN(+x)).length/v.length>.8});
+S.rows.forEach(r=>S.num.forEach(c=>r[c]=r[c]===null||isNaN(+r[c])?null:+r[c]));S.name=name;S.docs=S.docs.filter(d=>d.src!='dataset');addDoc('dataset',summary());status();render()}
+const nums=c=>S.rows.map(r=>r[c]).filter(v=>v!==null);
+function summary(){return `Dataset "${S.name}" ${S.rows.length} rows. Numeric: `+S.num.map(c=>{const v=nums(c);return `${c}(mean ${mean(v).toFixed(1)}, min ${Math.min(...v)}, max ${Math.max(...v)})`}).join('; ')+'. Categorical: '+S.cols.filter(c=>!S.num.includes(c)).join(', ')}
+function insights(){const o=[];let best=[0,'',''];S.num.forEach((a,i)=>S.num.slice(i+1).forEach(b=>{const pa=S.rows.filter(r=>r[a]!==null&&r[b]!==null);const k=corr(pa.map(r=>r[a]),pa.map(r=>r[b]));if(Math.abs(k)>Math.abs(best[0]))best=[k,a,b]}));
+if(best[1])o.push(`Strongest relationship: ${best[1]} vs ${best[2]} (r = ${best[0].toFixed(2)}).`);
+S.num.forEach(c=>{const v=nums(c),m=mean(v),s=sd(v),n=v.filter(x=>Math.abs(x-m)>3*s).length;if(n)o.push(`${c} has ${n} outlier${n>1?'s':''} beyond 3 standard deviations.`);const miss=S.rows.length-v.length;if(miss)o.push(`${c} is missing ${miss} values.`)});return o.length?o:['No obvious anomalies found.']}
+let ch=[];const gc={color:'#8a98b8'};const opt=()=>({plugins:{legend:{display:false}},scales:{x:{ticks:gc,grid:{color:'rgba(120,160,255,.1)'}},y:{ticks:gc,grid:{color:'rgba(120,160,255,.1)'}}}});
+function render(){ch.forEach(c=>c.destroy());ch=[];const n=S.num;
+let h=`<div class="st" style="margin-top:12px"><div><b>${S.rows.length}</b><span>rows</span></div><div><b>${S.cols.length}</b><span>columns</span></div><div><b>${n.length}</b><span>numeric</span></div></div><div class="card"><h3>Auto insights</h3>${insights().map(i=>`<p style="margin:4px 0">${esc(i)}</p>`).join('')}</div>
+<div class="card sc"><h3>Numeric summary</h3><table><tr><th>column</th><th>mean</th><th>median</th><th>std</th><th>min</th><th>max</th></tr>${n.map(c=>{const v=nums(c);return`<tr><td>${esc(c)}</td><td>${mean(v).toFixed(2)}</td><td>${med(v)}</td><td>${sd(v).toFixed(2)}</td><td>${Math.min(...v)}</td><td>${Math.max(...v)}</td></tr>`}).join('')}</table></div>`;
+if(n.length>1)h+=`<div class="card sc"><h3>Correlation</h3><table><tr><th></th>${n.map(c=>`<th>${esc(c)}</th>`).join('')}</tr>${n.map(a=>`<tr><th>${esc(a)}</th>${n.map(b=>{const k=corr(nums(a),nums(b));return`<td style="background:rgba(${k>0?'61,245,255':'255,77,109'},${Math.abs(k)*.5})">${k.toFixed(2)}</td>`}).join('')}</tr>`).join('')}</table></div>`;
+if(n.length)h+=`<div class="g"><div class="card"><div class="row"><h3 style="margin:0">Distribution</h3><select id="hs" onchange="hist()">${n.map(c=>`<option>${esc(c)}</option>`).join('')}</select></div><canvas id="hc"></canvas></div><div class="card"><div class="row"><select id="xs" onchange="scat()">${n.map(c=>`<option>${esc(c)}</option>`).join('')}</select><select id="ys" onchange="scat()">${n.map((c,i)=>`<option ${i==n.length-1?'selected':''}>${esc(c)}</option>`).join('')}</select></div><canvas id="sc"></canvas><p class="mu" id="rg"></p></div></div>`;
+h+=`<div class="card sc"><h3>Preview</h3><table><tr>${S.cols.map(c=>`<th>${esc(c)}</th>`).join('')}</tr>${S.rows.slice(0,8).map(r=>`<tr>${S.cols.map(c=>`<td>${esc(r[c]??'')}</td>`).join('')}</tr>`).join('')}</table></div>`;$('dout').innerHTML=h;if(n.length){hist();scat()}}
+const drop=id=>{ch=ch.filter(x=>{if(x.canvas&&x.canvas.id==id){x.destroy();return false}return true})};
+function hist(){const c=$('hs').value,v=nums(c),mn=Math.min(...v),mx=Math.max(...v),k=12,b=Array(k).fill(0);v.forEach(x=>b[Math.min(k-1,(x-mn)/(mx-mn||1)*k|0)]++);drop('hc');ch.push(new Chart($('hc'),{type:'bar',data:{labels:b.map((_,i)=>(mn+(mx-mn)*i/k).toFixed(0)),datasets:[{data:b,backgroundColor:'#3df5ff'}]},options:opt()}))}
+function scat(){const a=$('xs').value,b=$('ys').value,p=S.rows.filter(r=>r[a]!==null&&r[b]!==null),X=p.map(r=>r[a]),Y=p.map(r=>r[b]),mx=mean(X),my=mean(Y);let n=0,d=0;X.forEach((x,i)=>{n+=(x-mx)*(Y[i]-my);d+=(x-mx)**2});const m=n/(d||1),k=my-m*mx,r=corr(X,Y);
+$('rg').textContent=`${b} = ${m.toFixed(3)} x ${a} + ${k.toFixed(1)}  |  R² = ${(r*r).toFixed(3)}`;const lo=Math.min(...X),hi=Math.max(...X);drop('sc');
+ch.push(new Chart($('sc'),{type:'scatter',data:{datasets:[{data:p.slice(0,600).map(r=>({x:r[a],y:r[b]})),backgroundColor:'rgba(139,92,255,.7)',pointRadius:2.5},{type:'line',data:[{x:lo,y:m*lo+k},{x:hi,y:m*hi+k}],borderColor:'#ffb23d',pointRadius:0}]},options:opt()}))}
+function sample(){const r=()=>Math.random(),R=['North','South','East','West'],C=['Web','Retail','Partner'];let t='region,channel,ad_spend,visits,revenue\n';for(let i=0;i<400;i++){const a=Math.round(500+r()*4500),v=Math.round(600+r()*900),rev=Math.round(a*2.1+v*3.4+(r()-.5)*1800+(i%97==0?9000:0));t+=`${R[i%4]},${C[i%3]},${a},${v},${rev}\n`}ingest(t,'sample_sales.csv');go('data')}
+$('cf').onchange=async e=>{const f=e.target.files[0];f&&ingest(await f.text(),f.name)};const dz=$('dz');dz.ondragover=e=>e.preventDefault();dz.ondrop=async e=>{e.preventDefault();const f=e.dataTransfer.files[0];f&&ingest(await f.text(),f.name)};
+function report(){if(!S.rows.length)return alert('Load a dataset first');const t=`# DataPulse report: ${S.name}\n\n${summary()}\n\n## Insights\n${insights().map(i=>'- '+i).join('\n')}\n`;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/markdown'}));a.download='datapulse-report.md';a.click()}
+// ---------- Vault / RAG ----------
+const tok=s=>s.toLowerCase().match(/[a-z0-9]{2,}/g)||[];
+function addDoc(src,text){for(let i=0;i<text.length;i+=600)S.docs.push({src,text:text.slice(i,i+700),t:tok(text.slice(i,i+700))})}
+function search(q,k=4){const N=S.docs.length;if(!N)return[];const df={};S.docs.forEach(d=>new Set(d.t).forEach(w=>df[w]=(df[w]||0)+1));
+const vec=ts=>{const f={};ts.forEach(w=>f[w]=(f[w]||0)+1);const v={};for(const w in f)v[w]=(1+Math.log(f[w]))*Math.log(1+N/(df[w]||1));return v},nr=v=>Math.sqrt(Object.values(v).reduce((a,b)=>a+b*b,0))||1;const qv=vec(tok(q)),qn=nr(qv);
+return S.docs.map(d=>{const dv=vec(d.t);let dot=0;for(const w in qv)if(dv[w])dot+=qv[w]*dv[w];return{d,s:dot/(qn*nr(dv))}}).filter(x=>x.s>0).sort((a,b)=>b.s-a.s).slice(0,k)}
+function seed(){addDoc('profile',`${ME.name} is a final-year B.Tech Computer Science and Engineering student at Vaagdevi College of Engineering (2023 to 2027), based in Thorrur, Telangana, India. Email ${ME.email}. GitHub ${GHU}.`);
+EXP.forEach(e=>addDoc('experience',`${ME.name} worked as ${e.r} at ${e.o}, ${e.d}.`));CERT.forEach(c=>addDoc('certification',`Certification: ${c[0]} from ${c[1]}.`));
+Object.entries(SK).forEach(([k,v])=>addDoc('skills',`Skills in ${k}: ${v.join(', ')}.`));PR.forEach(p=>addDoc('project',`Project ${p.n} (${p.dom}): ${p.d} Stack: ${p.t.join(', ')}.`))}
+seed();status();
+async function vadd(){let t=$('vt').value,n='pasted';const f=$('vf').files[0];if(f){t=await f.text();n=f.name}if(!t)return;addDoc(n,t);$('vt').value='';$('vs').textContent='Indexed. Vault now holds '+S.docs.length+' passages (including my portfolio).'}
+async function vask(){const q=$('vq').value,h=search(q);if(!h.length){$('va').innerHTML='<p class="mu">Nothing relevant indexed yet.</p>';return}$('va').innerHTML='<p class="mu">Thinking...</p>';
+const ctx=h.map((x,i)=>`[${i+1}] (${x.d.src}) ${x.d.text}`).join('\n\n');try{const m=await groq([{role:'system',content:'Answer only from the context and cite like [1]. If the answer is missing, say so.'},{role:'user',content:`Context:\n${ctx}\n\nQuestion: ${q}`}]);
+$('va').innerHTML=`<p>${md(m.content||'')}</p>`+h.map((x,i)=>`<div class="tr"><b>[${i+1}] ${esc(x.d.src)}</b> match ${x.s.toFixed(2)}<code>${esc(x.d.text.slice(0,200))}</code></div>`).join('')}catch(e){$('va').innerHTML=`<p style="color:var(--r)">${esc(e.message)}</p>`}}
+// ---------- Groq with automatic model discovery ----------
+const API='https://api.groq.com/openai/v1',PREF=['openai/gpt-oss-120b','qwen/qwen3.6-27b','openai/gpt-oss-20b'];let MODELS=null;
+function fillModels(){if(!MODELS)return;$('gm').innerHTML='<option value="auto">Auto (best available)</option>'+MODELS.map(m=>`<option>${esc(m)}</option>`).join('');$('gm').value=MODELS.includes(cfg.model)?cfg.model:'auto'}
+async function pickModel(force){if(cfg.model!=='auto'&&!force)return cfg.model;
+if(!MODELS||force){const r=await fetch(API+'/models',{headers:{Authorization:'Bearer '+cfg.key}});if(!r.ok)throw new Error('Groq rejected the key ('+r.status+'). Check it in Settings.');MODELS=(await r.json()).data.map(m=>m.id).filter(id=>!/whisper|guard|tts|orpheus|prompt|safeguard|embed|compound/i.test(id));fillModels()}
+cfg.active=PREF.find(p=>MODELS.includes(p))||MODELS[0];$('am').textContent='Active model: '+cfg.active;return cfg.active}
+async function groq(messages,o={},retry=true){if(!cfg.key){go('set');throw new Error('Add your free Groq key in Settings first.')}
+const body={model:await pickModel(),messages,temperature:.3};if(o.tools){body.tools=o.tools;body.tool_choice='auto'}
+const r=await fetch(API+'/chat/completions',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+cfg.key},body:JSON.stringify(body)});
+if(!r.ok){const t=await r.text();if(retry&&/model/i.test(t)&&/not exist|decommission|access|deprecat/i.test(t)){cfg.model='auto';localStorage.gm='auto';MODELS=null;return groq(messages,o,false)}throw new Error('Groq error: '+t.slice(0,180))}
+return(await r.json()).choices[0].message}
+async function saveCfg(){cfg.key=$('gk').value.trim()||cfg.key;cfg.model=$('gm').value;localStorage.gk=cfg.key;localStorage.gm=cfg.model;status();try{await pickModel(true);alert('Key works. Using '+cfg.active)}catch(e){alert(e.message)}}
+$('gk').value=cfg.key;if(cfg.key)pickModel(true).catch(()=>{});
+// ---------- agent ----------
+const fn=(name,description,props={},req=[])=>({type:'function',function:{name,description,parameters:{type:'object',properties:props,required:req}}});
+const DEFS=[fn('dataset_info','Describe the loaded dataset.'),fn('query_data','Run a JavaScript expression over `rows` (array of objects), e.g. rows.filter(r=>r.region=="North").length. Helpers mean(arr) and sd(arr) exist.',{expr:{type:'string'}},['expr']),
+fn('search_docs','Search the portfolio of Nikhil and the Vault documents. Use for any question about Nikhil, his projects, skills, experience or certifications.',{query:{type:'string'}},['query']),fn('save_note','Save a note to persistent memory.',{text:{type:'string'}},['text']),fn('list_notes','List saved notes.'),fn('calculate','Evaluate a maths expression.',{expr:{type:'string'}},['expr'])];
+const TOOLS={dataset_info:()=>S.rows.length?summary():'No dataset loaded.',
+query_data:a=>{if(!S.rows.length)return'No dataset loaded.';if(/fetch|document|window|localStorage|eval|import|Function/.test(a.expr))return'blocked';try{return JSON.stringify(new Function('rows','mean','sd','"use strict";return ('+a.expr+')')(S.rows,mean,sd))}catch(e){return'error: '+e.message}},
+search_docs:a=>JSON.stringify(search(a.query,4).map(x=>x.d.text)),save_note:a=>{S.notes.push(a.text);localStorage.notes=JSON.stringify(S.notes);return'Saved.'},list_notes:()=>S.notes.join('\n')||'No notes yet.',
+calculate:a=>/^[\d\s+\-*/().%^,eE]+$/.test(a.expr)?String(Function('"use strict";return ('+a.expr.replace(/\^/g,'**')+')')()):'invalid expression'};
+async function agent(text,history,onStep){const sys=`You are Nova, the AI assistant on the portfolio of Nikhil Chary Sriramoju and a data lab. For any question about Nikhil call search_docs and answer only from its results; never invent employers, metrics or facts. Use query_data for dataset numbers and save_note when asked to remember. Be concise and friendly. Notes: ${S.notes.slice(-6).join(' | ')||'none'}. ${S.rows.length?summary():'No dataset loaded.'}`;
+const msgs=[{role:'system',content:sys},...history.slice(-8),{role:'user',content:text}];
+for(let i=0;i<6;i++){let m;try{m=await groq(msgs,{tools:DEFS})}catch(e){if(/tool|400/.test(e.message)&&i>0){const f=await groq(msgs.filter(x=>x.role!='tool'&&!x.tool_calls));return f.content}throw e}
+if(!m.tool_calls||!m.tool_calls.length)return m.content||'';msgs.push({role:'assistant',content:m.content||'',tool_calls:m.tool_calls});
+for(const tc of m.tool_calls){let a={};try{a=JSON.parse(tc.function.arguments||'{}')}catch{}let o;try{o=String(await(TOOLS[tc.function.name]||(()=>'unknown tool'))(a))}catch(e){o='error: '+e.message}o=o.slice(0,1800);onStep({tool:tc.function.name,args:a,out:o});msgs.push({role:'tool',tool_call_id:tc.id,content:o})}}return'Step limit reached.'}
+const offline=t=>{const h=search(t,2);return h.length?h.map(x=>x.d.text).join('\n\n')+'\n\n(Offline mode: answers come straight from the portfolio. Add a free Groq key in Settings for full AI answers.)':'I could not find that in the portfolio. Add a free Groq key in Settings for open-ended answers.'};
+function bub(h,c){const m=document.createElement('div');m.className='m '+c;m.innerHTML=h;$('cm').append(m);$('cm').scrollTop=1e9;return m}
+function q(t){$('ci').value=t;send()}
+async function send(){const t=$('ci').value.trim();if(!t)return;$('ci').value='';bub(esc(t),'u');const w=bub('<span class="mu">Nova is working...</span>','a');let tr='';
+try{let a;if(!cfg.key)a=offline(t);else a=await agent(t,S.msgs,s=>{tr+=`<div class="tr"><b>${esc(s.tool)}</b> <code>${esc(JSON.stringify(s.args))}</code><code>${esc(s.out.slice(0,300))}</code></div>`;w.innerHTML=tr+'<span class="mu">thinking...</span>'});
+w.innerHTML=tr+md(a);S.msgs.push({role:'user',content:t},{role:'assistant',content:a});if($('tts').checked&&window.speechSynthesis)speechSynthesis.speak(new SpeechSynthesisUtterance(a.slice(0,400)))}catch(e){w.innerHTML=`<span style="color:var(--r)">${esc(e.message)}</span>`}}
+$('ci').onkeydown=e=>e.key=='Enter'&&send();
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(SR){$('mic').onclick=()=>{const r=new SR();r.onresult=e=>{$('ci').value=e.results[0][0].transcript;send()};r.start()}}else $('mic').hidden=true;
+bub("Hi, I'm Nova, Nikhil's AI assistant. Ask about his projects, internships or certifications. Load a CSV in Data Lab and I can analyse it too.",'a');
+// ---------- Missions ----------
+async function mission(){const g=$('gi').value.trim();if(!g)return;const o=$('mo');o.innerHTML='<p class="mu">Planning...</p>';
+try{const p=await groq([{role:'system',content:'You plan analysis missions. Reply with ONLY a JSON object like {"steps":["step 1","step 2"]} containing 3 to 5 concrete steps. No other text.'},{role:'user',content:`Goal: ${g}\nContext: ${S.rows.length?summary():'no dataset loaded'}`}]);
+const mt=(p.content||'').match(/\{[\s\S]*\}/);const steps=JSON.parse(mt[0]).steps.slice(0,5);o.innerHTML='';const res=[];
+for(let i=0;i<steps.length;i++){const d=document.createElement('div');d.className='card';d.innerHTML=`<h3>Step ${i+1}: ${esc(steps[i])}</h3><span class="mu">running...</span>`;o.append(d);let tr='';
+const a=await agent(`Mission goal: ${g}\nCurrent step: ${steps[i]}\nPrior findings: ${res.join(' ')}`,[],s=>{tr+=`<div class="tr"><b>${esc(s.tool)}</b> <code>${esc(JSON.stringify(s.args))}</code></div>`;d.innerHTML=`<h3>Step ${i+1}: ${esc(steps[i])}</h3>${tr}`});res.push(a);d.innerHTML=`<h3>Step ${i+1}: ${esc(steps[i])}</h3>${tr}<p>${md(a)}</p>`}
+const f=await groq([{role:'system',content:'Write a crisp executive brief with a heading, key findings and 3 recommended actions. Use only the findings provided.'},{role:'user',content:`Goal: ${g}\nFindings:\n${res.join('\n')}`}]);
+const d=document.createElement('div');d.className='card';d.style.borderColor='var(--c)';d.innerHTML=`<h3>Mission brief</h3><p>${md(f.content||'')}</p>`;o.append(d)}catch(e){o.innerHTML=`<p style="color:var(--r)">${esc(e.message)}</p>`}}
+// ---------- Vision ----------
+const ls=u=>new Promise((r,j)=>{const s=document.createElement('script');s.src=u;s.onload=r;s.onerror=j;document.head.append(s)});let MN=null;
+$('vi').onchange=async e=>{const f=e.target.files[0];if(!f)return;const im=$('im');im.hidden=false;im.src=URL.createObjectURL(f);$('vo').innerHTML='<p class="mu">Loading CNN...</p>';
+try{if(!MN){await ls('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js');await ls('https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.1/dist/mobilenet.min.js');MN=await mobilenet.load({version:2,alpha:1})}
+await im.decode();const p=await MN.classify(im,5);$('vo').innerHTML=p.map(x=>`<div class="bar"><span style="width:150px">${esc(x.className.split(',')[0])}</span><i style="width:${x.probability*160}px"></i>${(x.probability*100).toFixed(1)}%</div>`).join('')+`<button class="o" style="margin-top:10px" onclick='go("nova");q(${JSON.stringify("My CNN classified an image as: "+p.map(x=>x.className.split(",")[0]+" "+(x.probability*100).toFixed(0)+"%").join(", ")+". What could this mean?")})'>Ask Nova about this</button>`}catch(err){$('vo').innerHTML='<p style="color:var(--r)">Could not load the CNN. Check your connection.</p>'}};
+// ---------- Terminal ----------
+const out=(t,c)=>{const d=document.createElement('div');if(c)d.className=c;d.textContent=t;$('tout').append(d);$('tout').scrollTop=1e9};
+const CMD={help:()=>'whoami, skills, projects, certs, exp, contact, github, ask <question>, clear',whoami:()=>`${ME.name}\nFinal-year B.Tech CSE, Vaagdevi College of Engineering (2023-2027)\nThorrur, Telangana, India`,
+skills:()=>Object.entries(SK).map(([k,v])=>k+': '+v.join(', ')).join('\n'),projects:()=>PR.map(p=>'- '+p.n+' ('+p.dom+')').join('\n'),certs:()=>CERT.map(c=>'- '+c[0]+' ('+c[1]+')').join('\n'),
+exp:()=>EXP.map(e=>'- '+e.r+' at '+e.o+' ('+e.d+')').join('\n'),contact:()=>ME.email+'\n'+ME.li+'\n'+GHU,github:()=>GH.length?GH.length+' public repos, '+GH.reduce((a,r)=>a+r.stargazers_count,0)+' stars':'GitHub data not loaded'};
+out('DataPulse terminal. Type help.');
+$('tin').onkeydown=async e=>{if(e.key!='Enter')return;const v=e.target.value.trim();e.target.value='';if(!v)return;out('$ '+v,'c');const[c,...r]=v.split(' ');
+if(c=='clear'){$('tout').innerHTML='';return}if(c=='ask'){const t=r.join(' ');try{out(cfg.key?await agent(t,[],()=>{}):offline(t))}catch(x){out(x.message)}return}out(CMD[c]?CMD[c]():'command not found. Type help.')};
+// ---------- Settings init ----------
+$('gm').value='auto';
+</script></body></html>
